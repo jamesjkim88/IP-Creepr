@@ -1,4 +1,7 @@
+// test addr 24.4.160.90
+
 import React, {useState, useEffect} from 'react';
+import LocationData from '../LocationData/LocationData';
 import apiService from '../../utils/apiService';
 
 export default function Input(){
@@ -23,7 +26,7 @@ export default function Input(){
     }
   }
 
-
+console.log(inputIPData)
   return(
     <>
     <h1>IP Creepr</h1>
@@ -31,8 +34,9 @@ export default function Input(){
       <form>
         <input type="text" onChange={handleInputChange}/>
         <button onClick={handleClick}>Submit</button>
-        <h1>{inputIPData.ip_address ? inputIPData.ip_address : 'nada'}</h1>
+        <h1>{inputIPData.city ? inputIPData.city : 'nada'}</h1>
       </form>
+      <LocationData data={inputIPData}/>
     </div>
     </>
   )
