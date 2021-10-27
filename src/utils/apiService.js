@@ -6,6 +6,14 @@ async function getUserIPLocationData(){
   return await data.json();
 }
 
-export default{
-  getUserIPLocationData
+async function getInputIPLocationData(ip){
+  const data = await fetch(url + "&ip_address=" + ip);
+  return await data.json();
 }
+
+export default{
+  getUserIPLocationData,
+  getInputIPLocationData
+}
+
+// https://ipgeolocation.abstractapi.com/v1/?api_key=fbf4880d4899497898d39e8dd71c0951ip_address=8.8.8.8
