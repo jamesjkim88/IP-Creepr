@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Input from '../../components/Input/Input';
+import LocationData from '../../components/LocationData/LocationData';
 import Map from '../../components/Map/Map';
 import apiService from '../../utils/apiService';
 
@@ -25,6 +26,7 @@ export default function Homepage(){
   return(
     <>
     <Input />
+    <LocationData/>
     <Map />
     </>
   )

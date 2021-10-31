@@ -1,21 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import LocationData from '../LocationData/LocationData';
 import apiService from '../../utils/apiService';
 
 export default function Input(){
-  const [inputIPDataVal, setInputIPDataVal] = useState("");
+  const [formDataVal, setformDataVal] = useState("");
   const [inputIPData, setInputIPData] = useState("");
 
   function handleInputChange(evt){
     evt.preventDefault();
-    setInputIPDataVal(evt.target.value);
+    setformDataVal(evt.target.value);
   }
 
   function handleClick(evt){
     evt.preventDefault();
-    console.log('clik');
     try{
-      apiService.getInputIPLocationData(inputIPDataVal).then(data => {
+      apiService.getInputIPLocationData(formDataVal).then(data => {
         setInputIPData(data)
       });
     }catch(err){
@@ -30,9 +28,9 @@ export default function Input(){
     <div className="hero">
       <form>
         <input type="text" onChange={handleInputChange}/>
-        <button onClick={handleClick}>Submit</button>
+        {/* <button onClick={handleClick}>Submit</button> */}
+        <input type="submit" value="Submit" />
       </form>
-      <LocationData data={inputIPData}/>
     </div>
     </>
   )

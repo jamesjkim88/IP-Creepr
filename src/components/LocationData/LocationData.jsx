@@ -19,7 +19,8 @@ export default function LocationData({data}){
 
   return(
     <>
-    <section>
+    ip address
+    {/* <section>
       <table>
         <tr>
           <th>IP ADDRESS</th>
@@ -34,7 +35,7 @@ export default function LocationData({data}){
           <td>{data ? data.connection.organization_name : ''}</td>
         </tr>
       </table>
-    </section>
+    </section> */}
     </>
   )
 }
