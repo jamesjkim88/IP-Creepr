@@ -8,65 +8,38 @@ TASKS:
 
 import React, {useState, useEffect} from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import apiService from '../../utils/apiService';
 
-export default function Map(){
-  const [userLat, setUserLat] = useState();
-  const [userLong, setUserLong] = useState();
+export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}){
+  const [userCords, setUserCords] = useState([51.505, -0.09]);
 
-  const cords = [51.505, -0.09];
+  const position = [51.505, -0.09];
 
-  async function getUserIPLocationData(){
-    try{
-      const data = await apiService.getUserIPLocationData();
-      setUserLat(data.latitude);
-      setUserLong(data.longitude);
-    }catch(err) {
-      console.log(err);
-      return err;
+  function setLatNLong(){
+    if(!inputIPDataLat && !inputIPDataLong){
+      return [userLat, userLong];
+    }
+    else if(inputIPDataLat, inputIPDataLong){
+      return [inputIPDataLat, inputIPDataLong]
     }
   }
 
-  function renderMap(){
-    if(userLat && userLong){
-      return(
-        <MapContainer center={[userLat, userLong]} zoom={25} scrollWheelZoom={false}>
+  useEffect(() => {
+    setUserCords([userLat, userLong])
+  }, [])
+  
+  return(
+    <>
+    <MapContainer center={position} zoom={25} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={[userLat, userLong]}>
+      <Marker position={position}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
       </Marker>
     </MapContainer>
-      )
-    }else{
-      return(
-        <div><h1>Map is loading...</h1></div>
-      )
-    }
-  }
-
-  useEffect(() => {
-    getUserIPLocationData()
-  }, [])
-  
-  return(
-    <>
-    {/* <MapContainer center={cords} zoom={25} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={cords}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer> */}
-    {renderMap()}
     </>
   )
 }
