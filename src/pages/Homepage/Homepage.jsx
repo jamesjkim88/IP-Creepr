@@ -7,6 +7,7 @@ import apiService from '../../utils/apiService';
 
 export default function Homepage(){
   const [data, setData] = useState({})
+  const [inputIPData, setInputIPData] = useState({});
 
   async function getUserIPLocationData(){
     try{
@@ -19,14 +20,19 @@ export default function Homepage(){
     }
   }
 
+  function getInputIPData(data){
+    setInputIPData(data);
+    console.log(data);
+  }
+
   useEffect(() => {
     //getIPLocationData()
   }, [])
 
   return(
     <>
-    <Input />
-    <LocationData/>
+    <Input getInputIPData={getInputIPData}/>
+    <LocationData inputIPData={inputIPData}/>
     <Map />
     </>
   )

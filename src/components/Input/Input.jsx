@@ -1,32 +1,31 @@
 import React, {useState, useEffect} from 'react';
 import apiService from '../../utils/apiService';
 
-export default function Input(){
+export default function Input(props){
   const [formDataVal, setformDataVal] = useState("");
-  const [inputIPData, setInputIPData] = useState("");
 
   function handleInputChange(evt){
     evt.preventDefault();
     setformDataVal(evt.target.value);
   }
 
-  function handleClick(evt){
+  function getInputIPData(evt){
     evt.preventDefault();
     try{
       apiService.getInputIPLocationData(formDataVal).then(data => {
-        setInputIPData(data)
+        props.getInputIPData(data)
       });
     }catch(err){
       console.log(err);
       return err;
     }
   }
-  
+
   return(
     <>
     <h1>IP Creepr</h1>
     <div className="hero">
-      <form>
+      <form onSubmit={getInputIPData}>
         <input type="text" onChange={handleInputChange}/>
         {/* <button onClick={handleClick}>Submit</button> */}
         <input type="submit" value="Submit" />
