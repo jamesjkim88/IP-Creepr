@@ -14,32 +14,52 @@ export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}
 
   const position = [51.505, -0.09];
 
-  function setLatNLong(){
-    if(!inputIPDataLat && !inputIPDataLong){
-      return [userLat, userLong];
-    }
-    else if(inputIPDataLat, inputIPDataLong){
-      return [inputIPDataLat, inputIPDataLong]
-    }
-  }
+  // function setLatNLong(){
+  //   if(inputIPDataLat && inputIPDataLong){
+  //     render <MapContainer center={} zoom={25} scrollWheelZoom={false}>
+  //   }else{
+  //     render <MapContainer center={position} zoom={25} scrollWheelZoom={false}>
+  //   }
+  // }
 
-  useEffect(() => {
-    setUserCords([userLat, userLong])
-  }, [])
-  
-  return(
-    <>
-    <MapContainer center={position} zoom={25} scrollWheelZoom={false}>
+  function renderMap(){
+    if(userLat && userLong){
+      return(
+<MapContainer center={[userLat, userLong]} zoom={25} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={position}>
+      <Marker position={[userLat, userLong]}>
         <Popup>
           A pretty CSS3 popup. <br /> Easily customizable.
         </Popup>
       </Marker>
     </MapContainer>
+      )
+    }
+    if(inputIPDataLat && inputIPDataLong){
+      console.log(inputIPDataLat);
+      return(
+        <MapContainer center={[inputIPDataLat, inputIPDataLong]} zoom={25} scrollWheelZoom={false}>
+      <TileLayer
+        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <Marker position={[userLat, userLong]}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
+    </MapContainer>
+      )
+    }
+  }
+
+  
+  return(
+    <>
+      {renderMap()}
     </>
   )
 }
