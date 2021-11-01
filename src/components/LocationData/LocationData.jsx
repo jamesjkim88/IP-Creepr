@@ -4,7 +4,7 @@ export default function LocationData({inputIPData}){
 
   // helper function for location rendering
   function locationRender(){
-    if(!inputIPData) return; // empty return if data doesn't exist
+    if(Object.keys(inputIPData).length === 0) return; // empty return if data doesn't exist
 
     // render blank strings before api call is made so location is should render nada
     if(inputIPData){
@@ -16,7 +16,7 @@ export default function LocationData({inputIPData}){
       }
     }
   }
-
+console.log(Object.keys(inputIPData).length !== 0)
   return(
     <>
     ip address
@@ -29,10 +29,10 @@ export default function LocationData({inputIPData}){
           <th>ISP</th>
         </tr>
         <tr>
-          <td>{inputIPData.ip_address ? inputIPData.ip_address : ''}</td>
+          <td>{Object.keys(inputIPData).length !== 0 ? inputIPData.ip_address : ''}</td>
           <td>{locationRender()}</td>
-          <td>{inputIPData ? inputIPData.timezone.name : ""}</td>
-          <td>{inputIPData ? inputIPData.connection.organization_name : ''}</td>
+          <td>{Object.keys(inputIPData).length !== 0 ? inputIPData.timezone.name : ""}</td>
+          <td>{Object.keys(inputIPData).length !== 0 ? inputIPData.connection.organization_name : ''}</td>
         </tr>
       </table>
     </section>
