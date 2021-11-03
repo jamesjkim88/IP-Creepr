@@ -27,7 +27,6 @@ export default function Input(props){
     <div className="hero">
       <form onSubmit={getInputIPData}>
         <input type="text" onChange={handleInputChange}/>
-        {/* <button onClick={handleClick}>Submit</button> */}
         <input type="submit" value="Submit" />
       </form>
     </div>

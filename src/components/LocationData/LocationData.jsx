@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 
 export default function LocationData({inputIPData}){
-
   // helper function for location rendering
   function locationRender(){
     if(Object.keys(inputIPData).length === 0) return; // empty return if data doesn't exist
@@ -16,10 +15,8 @@ export default function LocationData({inputIPData}){
       }
     }
   }
-console.log(Object.keys(inputIPData).length !== 0)
   return(
     <>
-    ip address
     <section>
       <table>
         <tr>
