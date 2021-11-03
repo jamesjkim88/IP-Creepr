@@ -18,18 +18,18 @@ export default function LocationData({inputIPData}){
   return(
     <>
     <section>
-      <table>
+      <table className="ip-data-table">
         <tr>
-          <th>IP ADDRESS</th>
-          <th>LOCATION</th>
-          <th>TIMEZONE</th>
-          <th>ISP</th>
+          <th className="header-1">IP ADDRESS</th>
+          <th className="header-2">LOCATION</th>
+          <th className="header-3">TIMEZONE</th>
+          <th className="header-4">ISP</th>
         </tr>
         <tr>
-          <td>{Object.keys(inputIPData).length !== 0 ? inputIPData.ip_address : ''}</td>
-          <td>{locationRender()}</td>
-          <td>{Object.keys(inputIPData).length !== 0 ? inputIPData.timezone.name : ""}</td>
-          <td>{Object.keys(inputIPData).length !== 0 ? inputIPData.connection.organization_name : ''}</td>
+          <td className="td-copy" id="ip-address">{Object.keys(inputIPData).length !== 0 ? inputIPData.ip_address : ''}</td>
+          <td className="td-copy" id="ip-location">{locationRender()}</td>
+          <td className="td-copy" id="ip-timezone">{Object.keys(inputIPData).length !== 0 ? inputIPData.timezone.name : ""}</td>
+          <td className="td-copy" id="ip-isp">{Object.keys(inputIPData).length !== 0 ? inputIPData.connection.organization_name : ''}</td>
         </tr>
       </table>
     </section>
