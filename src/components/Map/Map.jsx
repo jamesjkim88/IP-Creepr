@@ -7,20 +7,11 @@ TASKS:
 */
 
 import React, {useState, useEffect} from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, MapConsumer } from 'react-leaflet';
+import PanTo from '../SetView/SetView';
+
 
 export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}){
-  const [userCords, setUserCords] = useState([51.505, -0.09]);
-
-  const position = [51.505, -0.09];
-
-  // function setLatNLong(){
-  //   if(inputIPDataLat && inputIPDataLong){
-  //     render <MapContainer center={} zoom={25} scrollWheelZoom={false}>
-  //   }else{
-  //     render <MapContainer center={position} zoom={25} scrollWheelZoom={false}>
-  //   }
-  // }
 
   function renderMap(){
     if(userLat && userLong){
@@ -31,11 +22,14 @@ export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {inputIPDataLat && inputIPDataLong ? (
-            <Marker position={[inputIPDataLat, inputIPDataLong]}>
-            <Popup>
-              A pretty CSS3 popup. <br /> Easily customizable.
-            </Popup>
-          </Marker>
+            <>
+              <PanTo inputIPDataLat={inputIPDataLat} inputIPDataLong={inputIPDataLong}/>
+              <Marker position={[inputIPDataLat, inputIPDataLong]}>
+                <Popup>
+                  A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+              </Marker>
+              </>
           ) : (
             <Marker position={[userLat, userLong]}>
             <Popup>
@@ -49,6 +43,10 @@ export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}
   }
   console.log(userLat);
 console.log(inputIPDataLat);
+
+// useEffect(() => {
+//   const map = map.toPan(inputIPDataLat, inputIPDataLong);
+// })
   
   return(
     <>
