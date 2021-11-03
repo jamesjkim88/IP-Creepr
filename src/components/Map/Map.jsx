@@ -25,37 +25,30 @@ export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}
   function renderMap(){
     if(userLat && userLong){
       return(
-<MapContainer center={[userLat, userLong]} zoom={25} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={[userLat, userLong]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer>
-      )
-    }
-    if(inputIPDataLat && inputIPDataLong){
-      console.log(inputIPDataLat);
-      return(
-        <MapContainer center={[inputIPDataLat, inputIPDataLong]} zoom={25} scrollWheelZoom={false}>
-      <TileLayer
-        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={[userLat, userLong]}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer>
+        <MapContainer center={[userLat, userLong]} zoom={25} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {inputIPDataLat && inputIPDataLong ? (
+            <Marker position={[inputIPDataLat, inputIPDataLong]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+          ) : (
+            <Marker position={[userLat, userLong]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+          )}
+        </MapContainer>
       )
     }
   }
-
+  console.log(userLat);
+console.log(inputIPDataLat);
   
   return(
     <>
