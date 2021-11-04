@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { MapContainer, TileLayer, Marker, Popup, MapConsumer } from 'react-leaflet';
-import PanTo from '../SetView/SetView';
+import SetView from '../../hooks/SetView/SetView';
+import ScrollWheelZoom from '../../hooks/ScrollWheelZoom/ScrollWheelZoom';
 
 
 export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}){
@@ -10,13 +11,16 @@ export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}
     if(userLat && userLong){
       return(
         <MapContainer center={[userLat, userLong]} zoom={15} scrollWheelZoom={false}>
+          {/* {hooks.ScrollWheelZoom()} */}
+          {/* <ScrollWheelZoom /> */}
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {inputIPDataLat && inputIPDataLong ? (
             <>
-              <PanTo inputIPDataLat={inputIPDataLat} inputIPDataLong={inputIPDataLong}/>
+              {/* {hooks.ReCenter(inputIPDataLat, inputIPDataLong)} */}
+              <SetView inputIPDataLat={inputIPDataLat} inputIPDataLong={inputIPDataLong}/>
               <Marker position={[inputIPDataLat, inputIPDataLong]}>
                 <Popup>
                   A pretty CSS3 popup. <br /> Easily customizable.
