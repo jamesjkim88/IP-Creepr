@@ -1,7 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import { MapContainer, TileLayer, Marker, Popup, MapConsumer } from 'react-leaflet';
+import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import SetView from '../../hooks/SetView/SetView';
-import ScrollWheelZoom from '../../hooks/ScrollWheelZoom/ScrollWheelZoom';
 
 
 export default function Map({inputIPDataLat, inputIPDataLong, userLat, userLong}){
