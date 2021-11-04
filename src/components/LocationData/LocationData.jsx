@@ -17,7 +17,7 @@ export default function LocationData({inputIPData}){
   }
   return(
     <>
-    <section>
+
       <table className="ip-data-table">
         <tr>
           <th className="header-1">IP ADDRESS</th>
@@ -32,7 +32,7 @@ export default function LocationData({inputIPData}){
           <td className="td-copy" id="ip-isp">{Object.keys(inputIPData).length !== 0 ? inputIPData.connection.organization_name : ''}</td>
         </tr>
       </table>
-    </section>
+ 
     </>
   )
 }

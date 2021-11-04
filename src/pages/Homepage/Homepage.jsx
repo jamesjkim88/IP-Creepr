@@ -34,8 +34,8 @@ export default function Homepage(){
     {userData ? (
       <>
       <Input getInputIPData={getInputIPData}/>
-      <LocationData inputIPData={inputIPData}/>
       <Map inputIPDataLat={inputIPData.latitude} inputIPDataLong={inputIPData.longitude} userLat={userData.latitude} userLong={userData.longitude}/>
+      <LocationData inputIPData={inputIPData}/>
       </>
     ) : (
       <h1>Page is loading...</h1>

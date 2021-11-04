@@ -22,14 +22,12 @@ export default function Input(props){
   }
 
   return(
-    <>
-    <h1>IP Creepr</h1>
     <div className="hero">
-      <form onSubmit={getInputIPData}>
-        <input type="text" onChange={handleInputChange}/>
-        <input type="submit" value="Submit" />
-      </form>
+      <h1><span id="border">IP Creepr</span></h1>
+        <form onSubmit={getInputIPData}>
+          <input className='ip-input' type="text" onChange={handleInputChange}/>
+          <input className='btn btn-submit' type="submit" value="Submit" />
+        </form>
     </div>
-    </>
   )
 }

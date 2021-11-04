@@ -1,3 +1,8 @@
+body, html{
+  margin: 0;
+  padding: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -39,4 +44,82 @@
 
 #map, .leaflet-container{
   height: 100vh;
+}
+
+.hero {
+  background-image: url('https://www.mapsinternational.co.uk/pub/media/catalog/product/x/r/o/rome-city-street-map-print-charcoal_ls01560.jpg');
+  height: 350px;
+}
+
+.hero h1{
+  color: #fff;
+  font-size: 72px;
+  padding: 25px 0;
+  margin: 0;
+}
+
+#border{
+  border-bottom: 8px solid rgb(223, 0, 0);
+}
+
+.ip-input{
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid black;
+  padding: 8px 15px;
+  width: 10%;
+  font-size: 16px;
+}
+
+.btn-submit{
+  background-color: #424a4c;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+  color: red;
+  padding: 8px 15px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+form{
+  padding-top: 25px;
+}
+
+.ip-data-table{
+  background-color: #bbbab8;
+  position: absolute;
+  color: white;
+  top: 30%;
+  left: 25%;
+  width: 50%;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+table th, table td {
+  color: white;
+  z-index: 2;
+}
+
+table th{
+  padding-top: 15px;
+}
+
+.td-copy{
+  z-index: 2;
+  font-size: 24px;
+  font-weight: 600;
+  /* border-right: 2px solid #fff; */
+  vertical-align: top;
+  padding: 10px 0;
+}
+
+.td-copy:last-child{
+  border-right: none;
+}
+
+#map, .leaflet-container{
+  z-index: 1;
 }
