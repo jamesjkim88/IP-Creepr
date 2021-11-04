@@ -1,4 +1,4 @@
-# [IP Creepr](https://ip-creepr.herokuapp.com/)
+# IP Creepr
 
 With this app, you'll be able to track IP's all over the world. IP Creepr is powered by [Abstract IP Geolocation API](https://www.abstractapi.com/ip-geolocation-api) and [LeafLet](https://leafletjs.com/) along with [React Leaftlet](https://react-leaflet.js.org/) for Map functions.
 
