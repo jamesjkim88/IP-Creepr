@@ -18,12 +18,12 @@ export default function LocationData({inputIPData}){
   return(
     <>
 
-      <table className="ip-data-table">
+      {/* <table className="ip-data-table">
         <tr>
-          <th className="header-1">IP ADDRESS</th>
-          <th className="header-2">LOCATION</th>
-          <th className="header-3">TIMEZONE</th>
-          <th className="header-4">ISP</th>
+          <th className="th-header" id="header-1">IP ADDRESS</th>
+          <th className="th-header" id="header-2">LOCATION</th>
+          <th className="th-header" id="header-3">TIMEZONE</th>
+          <th className="th-header" id="header-4">ISP</th>
         </tr>
         <tr>
           <td className="td-copy" id="ip-address">{Object.keys(inputIPData).length !== 0 ? inputIPData.ip_address : ''}</td>
@@ -31,7 +31,23 @@ export default function LocationData({inputIPData}){
           <td className="td-copy" id="ip-timezone">{Object.keys(inputIPData).length !== 0 ? inputIPData.timezone.name : ""}</td>
           <td className="td-copy" id="ip-isp">{Object.keys(inputIPData).length !== 0 ? inputIPData.connection.organization_name : ''}</td>
         </tr>
-      </table>
+      </table> */}
+
+      <div className="ip-data-table">
+        <div className="row-header">
+          <p className="th-header" id="header-1"><span className="white-border">IP ADDRESS</span></p>
+          <p className="th-header" id="header-2"><span className="white-border">LOCATION</span></p>
+          <p className="th-header" id="header-3"><span className="white-border">TIMEZONE</span></p>
+          <p className="th-header" id="header-4"><span className="white-border">ISP</span></p>
+        </div>
+        
+        <div className="row-content">
+          <p className="td-copy" id="ip-address">{Object.keys(inputIPData).length !== 0 ? inputIPData.ip_address : ''}</p>
+          <p className="td-copy" id="ip-location">{locationRender()}</p>
+          <p className="td-copy" id="ip-timezone">{Object.keys(inputIPData).length !== 0 ? inputIPData.timezone.name : ""}</p>
+          <p className="td-copy" id="ip-isp">{Object.keys(inputIPData).length !== 0 ? inputIPData.connection.organization_name : ''}</p>
+        </div>
+      </div>
  
     </>
   )
